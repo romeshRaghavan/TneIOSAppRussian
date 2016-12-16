@@ -1,18 +1,18 @@
       <div class="modal-body clearfix">
         <div class="row">
           <div class="col-lg-12 clearfix addanexpense">
-            <h1>Add Travel Expense</h1>
+            <h1>Добавить Путешествовать расходы</h1>
             <div class="expenseform clearfix" data-role="page" id="page1">
               <ul>
                 <li>
                    <input id="travelRequestName" type="hidden" style="width: 98%">
                    <br><br>
-				   <p><font face="verdana" size="1" color="green">Start Dt.</font><label for="startDate" style="width: 30%"  />
-				    <font face="verdana" size="1" color="green">End Dt.</font><label for="endDate" style="width: 30%"/></font></span></p>
+				   <p><font face="verdana" size="1" color="green">Начало Дата</font><label for="startDate" style="width: 30%"  />
+				    <font face="verdana" size="1" color="green">End Дата</font><label for="endDate" style="width: 30%"/></font></span></p>
 				</li>
 				<li>
                   <div role="main" class="ui-content">
-                    <input id="expDate" type="text" class="span2 dp1" placeholder="Date" readonly="readonly">
+                    <input id="expDate" type="text" class="span2 dp1" placeholder="Дата" readonly="readonly">
                   </div>
                 </li>
 				<li>
@@ -27,13 +27,13 @@
                     <input id="fromCitytown" type="hidden" style="width: 98%">
                 </li>
 				<li>
-                    <input id="expNarration" type="text" placeholder="Enter Expense Narration" >
+                    <input id="expNarration" type="text" placeholder="Войти расходы пересказ" >
                 </li>
                 <li>
-					<p ><font face="verdana" size="1" color="green">Unit is no. of persons/Kms/meals etc.</font></span></p>
-					<input id="expUnit" style="width: 22%" type="tel" placeholder="Units" onkeyup="">
+					<p ><font face="verdana" size="1" color="green">Ед. изм является номер из лиц/Kms/питание и т.д.</font></span></p>
+					<input id="expUnit" style="width: 22%" type="tel" placeholder="Единицы" onkeyup="">
                 
-					<input id="expAmt" style="width: 38%" type="tel" placeholder="Amount" onkeyup="validate();">
+					<input id="expAmt" style="width: 38%" type="tel" placeholder="Количество" onkeyup="validate();">
                 
 					<input id="currency" style="width: 33%" type="hidden" >
                 </li>
@@ -48,14 +48,14 @@
 				</li>
 			   </div>
 			    <div style="display:none" id="displayTextTS" class="displayTextTSCSS">
-						Expenses added successfully.
+						Затраты добавленный успешно.
 				</div>
               </ul>
             </div>
           </div>
 		  <div style="text-align:center;">
-            <button class="btn btn-primary btn-lg " style="width: 40%;height: 52px;" onclick="saveTravelSettleDetails(0);">Save &amp; New</button>
-            <button class="btn btn-primary btn-lg " style="width: 40%" onclick="saveTravelSettleDetails(1);">Save &amp; Go to Synch</button>
+            <button class="btn btn-primary btn-lg " style="width: 40%;height: 52px;" onclick="saveTravelSettleDetails(0);">Сохранить &amp; новый</button>
+            <button class="btn btn-primary btn-lg " style="width: 40%" onclick="saveTravelSettleDetails(1);">Сохранить &amp; Идти к Синхронизация</button>
 		  </div>
          
         </div>

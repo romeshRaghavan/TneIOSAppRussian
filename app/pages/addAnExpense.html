@@ -1,12 +1,12 @@
       <div class="modal-body clearfix">
         <div class="row">
           <div class="col-lg-12 clearfix addanexpense">
-            <h1>Add Business Expense</h1>
+            <h1>Добавить Бизнес расходы</h1>
             <div class="expenseform clearfix" data-role="page" id="page1">
               <ul>
                 <li>
                   <div role="main" class="ui-content">
-                    <input id="expDate" type="text" class="span2 dp1" placeholder="Date" readonly="readonly">
+                    <input id="expDate" type="text" class="span2 dp1" placeholder="Дата" readonly="readonly">
                   </div>
 				</li>
                 <li>
@@ -19,17 +19,17 @@
                   <input id="ratePerUnit" type="hidden" >
 		</li>
                  <li>
-                  <input id="expFromLoc" type="text" style="width: 49%" placeholder="From Location" onchange="resetUnit();" onblur="setNarration();">
-		  <input id="expToLoc" type="text" style="width: 49%" placeholder="To Location" onchange="resetUnit();" onblur="setNarration();">
+                  <input id="expFromLoc" type="text" style="width: 49%" placeholder="Из Место нахождения" onchange="resetUnit();" onblur="setNarration();">
+		  <input id="expToLoc" type="text" style="width: 49%" placeholder="к Место нахождения" onchange="resetUnit();" onblur="setNarration();">
 		</li>
                 <li>
-                  <input id="expNarration" type="text" placeholder="Enter Expense Narration" >
+                  <input id="expNarration" type="text" placeholder="Войти расходы пересказ" >
                 </li>
                 <li>
-		  <p><font face="verdana" size="1" color="green">Unit is no. of persons/Kms/meals etc.</font></span></p>
-                  <input id="expUnit" type="tel" style="width: 22%" placeholder="Units" onkeyup="calculatePerUnit();checkPerUnitExceptionStatusForBEAtLineLevel();">
+		  <p><font face="verdana" size="1" color="green">Единицы является номер из лиц/Kms/питание и т.д.</font></span></p>
+                  <input id="expUnit" type="tel" style="width: 22%" placeholder="Единицы" onkeyup="calculatePerUnit();checkPerUnitExceptionStatusForBEAtLineLevel();">
 		  <input id="wayPointunitValue" value="" readonly="readonly" type="hidden">
-		  <input id="expAmt" type="tel" style="width: 38%" placeholder="Amount" onkeyup="checkPerUnitExceptionStatusForBEAtLineLevel();validate();">
+		  <input id="expAmt" type="tel" style="width: 38%" placeholder="Количество" onkeyup="checkPerUnitExceptionStatusForBEAtLineLevel();validate();">
                   <input id="currency" type="hidden" style="width: 33%">
 		  <p id="errorMsgArea" ><span id="errorSpan"></span></p>
 		</li>
@@ -49,11 +49,11 @@
 			   </div>
 			
             <div  style="display:none" id="displayText" class="displayTextCSS">
-               Expenses added successfully.
+               Затраты добавленный успешно.
            </div>
 		   <div style="text-align:center;">
-            <button class="btn btn-primary btn-lg " style="width: 40%;height: 52px;" onclick="saveBusinessDetails(0);">Save &amp; New</button>
-            <button class="btn btn-primary btn-lg " style="width: 40%" onclick="saveBusinessDetails(1);">Save &amp; Go to Synch</button>
+            <button class="btn btn-primary btn-lg " style="width: 40%;height: 52px;" onclick="saveBusinessDetails(0);">Сохранить &amp; новый</button>
+            <button class="btn btn-primary btn-lg " style="width: 40%" onclick="saveBusinessDetails(1);">Сохранить &amp; Идти к Синхронизация</button>
 			</div>
           </div>
           </div>

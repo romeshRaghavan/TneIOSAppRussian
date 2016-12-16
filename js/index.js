@@ -2,7 +2,7 @@ var j = jQuery.noConflict();
 var defaultPagePath='app/pages/';
 var headerMsg = "Expenzing";
 var urlPath;
-var WebServicePath = 'http://live.nexstepapps.com:8284/NexstepWebService/mobileLinkResolver.service';
+var WebServicePath = 'http://1.255.255.198:8089/NexstepWebService/mobileLinkResolver.service';
 var clickedFlagCar = false;
 var clickedFlagTicket = false;
 var clickedFlagHotel = false;
@@ -87,7 +87,7 @@ function login()
  			   j('#loading').hide();
            }else{
 			    j('#loading').hide();
-             alert("Please enter correct username or password");
+             alert("пожалуйста войти верный имя пользователя или пароль");
            }
 
          },
@@ -104,8 +104,8 @@ function commanLogin(){
  	var domainName = userNameValue.split('@')[1];
 	var jsonToDomainNameSend = new Object();
 	jsonToDomainNameSend["userName"] = domainName;
-	jsonToDomainNameSend["mobilePlatform"] = device.platform;
-	//jsonToDomainNameSend["mobilePlatform"] = "Android";
+	//jsonToDomainNameSend["mobilePlatform"] = device.platform;
+	jsonToDomainNameSend["mobilePlatform"] = "Android";
   	//var res=JSON.stringify(jsonToDomainNameSend);
 	var requestPath = WebServicePath;
 	j.ajax({
@@ -127,7 +127,7 @@ function commanLogin(){
  			}else{
  				successMessage = data.message;
  				if(successMessage == "" || successMessage == null){
-				alert("Please enter correct username or password");				
+				alert("пожалуйста войти верный пользователя или пароль");				
 				}else{
  				alert(successMessage);	
  				}	
@@ -311,7 +311,7 @@ function saveBusinessExpDetails(jsonBEArr,busExpDetailsArr){
 				  data: JSON.stringify(jsonToSaveBE),
 				  success: function(data) {
 				  	if(data.Status=="Success"){
-				  		successMessage = "Record(s) has been synchronized successfully.";
+				  		successMessage = "Запись (ы) имеет было синхронизированный успешно.";
 						 for(var i=0; i<busExpDetailsArr.length; i++ ){
 							var businessExpDetailId = busExpDetailsArr[i];
 							deleteSelectedExpDetails(businessExpDetailId);
@@ -322,12 +322,12 @@ function saveBusinessExpDetails(jsonBEArr,busExpDetailsArr){
 						 //appPageHistory.push(pageRef);
 					 }else if(data.Status=="Error"){
 					 	requestRunning = false;
-					 	successMessage = "Oops!! Something went wrong. Please contact system administrator";
+					 	successMessage = "ой!! нибудь является неправильно, пожалуйста контакт система администрировать";
 						j('#mainHeader').load(headerBackBtn);
 					 	j('#mainContainer').load(pageRef);
 					 }else{
 					 	requestRunning = false;
-					 	successMessage = "Error in synching expenses. Please contact system administrator";
+					 	successMessage = "ошибка в синхронизация затраты. пожалуйста контакт система администрировать";
 						j('#mainHeader').load(headerBackBtn);
 					 	j('#mainContainer').load(pageRef);
 					 } 
@@ -335,7 +335,7 @@ function saveBusinessExpDetails(jsonBEArr,busExpDetailsArr){
 				  error:function(data) {
 					  j('#loading_Cat').hide();
 					  requestRunning = false;
-					alert("error: Oops something is wrong, Please Contact System Administer");
+					alert("ошибка: ой что нибудь является неправильно, пожалуйста контакт система администрировать");
 				  }
 			});
 }
@@ -355,7 +355,7 @@ function saveTravelSettleExpDetails(jsonTSArr,tsExpDetailsArr){
 				  data: JSON.stringify(jsonToSaveTS),
 				  success: function(data) {
 				  	if(data.Status=="Success"){
-				  	successMessage = "Record(s) has been synchronized successfully.";
+				  	successMessage = "Запись (ы) имеет было синхронизированный успешно.";
 					 for(var i=0; i<tsExpDetailsArr.length; i++ ){
 						var travelSettleExpDetailId = tsExpDetailsArr[i];
 						deleteSelectedTSExpDetails(travelSettleExpDetailId);
@@ -365,19 +365,19 @@ function saveTravelSettleExpDetails(jsonTSArr,tsExpDetailsArr){
 					 j('#mainContainer').load(pageRef);
 					 }else if(data.Status=="Error"){
 					 	requestRunning = false;
-						successMessage = "Oops!! Something went wrong. Please contact system administrator.";
+						successMessage = "ой!! что нибудь является неправильно. пожалуйста контакт система администрировать.";
 						j('#mainHeader').load(headerBackBtn);
 					 	j('#mainContainer').load(pageRef);
 					 }else{
 					 	requestRunning = false;
-						successMessage = "Error in synching expenses. Please contact system administrator.";
+						successMessage = "ошибка в синхронизация затраты. пожалуйста контакт система администрировать.";
 						j('#mainHeader').load(headerBackBtn);
 					 	j('#mainContainer').load(pageRef);
 					 }
 				  },
 				  error:function(data) {
 				  	requestRunning = false;
-					alert("Error: Oops something is wrong, Please Contact System Administer");
+					alert("ошибка: ой что нибудь является неправильно, пожалуйста контакт система администрировать");
 				  }
 			});
 }
@@ -433,7 +433,7 @@ j.ajax({
 					 	j('#mainContainer').load(pageRef);
 					 }else{
 						 j('#loading_Cat').hide();
-						successMessage = "Oops!! Something went wrong. Please contact system administrator.";
+						successMessage = "ой!! что нибудь является неправильно. пожалуйста контакт система администрировать.";
 						j('#mainHeader').load(headerBackBtn);
 					 	j('#mainContainer').load(pageRef);
 					 }
@@ -441,7 +441,7 @@ j.ajax({
 				  error:function(data) {
 					j('#loading_Cat').hide();
 					requestRunning = false;
-					alert("Error: Oops something is wrong, Please Contact System Administer");
+					alert("ошибка: ой что нибудь является неправильно, пожалуйста контакт система администрировать");
 				  }
 			});
 }
@@ -465,7 +465,7 @@ function createAccHeadDropDown(jsonAccHeadArr){
 			})
 			j("#accountHead").select2({
 				data:{ results: jsonArr, text: 'name' },
-				placeholder: "Account Head",
+				placeholder: "Счет Глава",
 				minimumResultsForSearch: -1,
 				initSelection: function (element, callback) {
 					callback(jsonArr[1]);
@@ -490,7 +490,7 @@ function createTRAccHeadDropDown(jsonAccHeadArr){
 	}
 	j("#trAccountHead").select2({
 		data:{ results: jsonArr, text: 'name' },
-		placeholder: "Select Account Head",
+		placeholder: "Выбрать Счет Глава",
 		minimumResultsForSearch: -1,
 		formatResult: function(result) {
 			if ( ! isJsonString(result.id))
@@ -521,7 +521,7 @@ function createExpNameDropDown(jsonExpNameArr){
 	
 	j("#expenseName").select2({
 		data:{ results: jsonExpArr, text: 'name' },
-		placeholder: "Expense Name",
+		placeholder: "расходы имя",
 		minimumResultsForSearch: -1,
 		initSelection: function (element, callback) {
 			callback(jsonExpArr[0]);
@@ -547,7 +547,7 @@ function createCurrencyDropDown(jsonCurrencyArr){
 		
 	j("#currency").select2({
 		data:{ results: jsonArr, text: 'name' },
-		placeholder: "Currency",
+		placeholder: "валюта",
 		minimumResultsForSearch: -1,
 		initSelection: function (element, callback) {
 					callback(jsonArr[0]);
@@ -573,7 +573,7 @@ function createTravelModeDown(jsonTrvlModeArr){
 		
 	j("#travelMode").select2({
 		data:{ results: jsonArr, text: 'name' },
-		placeholder: "Travel Mode",
+		placeholder: "Путешествовать Режим",
 		minimumResultsForSearch: -1,
 		formatResult: function(result) {
 			if ( ! isJsonString(result.id))
@@ -584,7 +584,7 @@ function createTravelModeDown(jsonTrvlModeArr){
 	
 	j("#roundTripMode").select2({
 		data:{ results: jsonArr, text: 'name' },
-		placeholder: "Travel Mode",
+		placeholder: "Путешествовать Режим",
 		minimumResultsForSearch: -1,
 		formatResult: function(result) {
 			if ( ! isJsonString(result.id))
@@ -606,7 +606,7 @@ function createCategoryDropDown(jsonCategoryArr){
 		
 	j("#travelCategory").select2({
 		data:{ results: jsonArr, text: 'name' },
-		placeholder: "Travel Category",
+		placeholder: "Путешествовать категория",
 		minimumResultsForSearch: -1,
 		formatResult: function(result) {
 			if ( ! isJsonString(result.id))
@@ -617,7 +617,7 @@ function createCategoryDropDown(jsonCategoryArr){
 	
 	j("#roundTripCategory").select2({
 		data:{ results: jsonArr, text: 'name' },
-		placeholder: "Travel Category",
+		placeholder: "Путешествовать категория",
 		minimumResultsForSearch: -1,
 		formatResult: function(result) {
 			if ( ! isJsonString(result.id))
@@ -639,7 +639,7 @@ function createCitytownDropDown(jsonCityTownArr){
 		
 	j("#fromCitytown").select2({
 		data:{ results: jsonArr, text: 'name' },
-		placeholder: "From Location",
+		placeholder: "Из Место нахождения",
 		//minimumResultsForSearch: -1,
 		formatResult: function(result) {
 			if ( ! isJsonString(result.id))
@@ -650,7 +650,7 @@ function createCitytownDropDown(jsonCityTownArr){
 	
 	j("#toCitytown").select2({
 		data:{ results: jsonArr, text: 'name' },
-		placeholder: "To Location",
+		placeholder: "к Место нахождения",
 		//minimumResultsForSearch: -1,
 		formatResult: function(result) {
 			if ( ! isJsonString(result.id))
@@ -672,7 +672,7 @@ function createTravelTypeDropDown(jsonTravelTypeArr){
 		
 	j("#travelType").select2({
 		data:{ results: jsonArr, text: 'name' },
-		placeholder: "Purpose Of Travel",
+		placeholder: "Цель из Путешествовать",
 		minimumResultsForSearch: -1,
 		formatResult: function(result) {
 			if ( ! isJsonString(result.id))
@@ -693,15 +693,15 @@ function getFormattedDate(input){
 
 function validateExpenseDetails(exp_date,exp_from_loc,exp_to_loc,exp_narration,exp_unit,exp_amt,acc_head_id,exp_name_id,currency_id){
 	if(exp_date == ""){
-		alert("Expense Date is invalid");
+		alert("расходы Дата является инвалид");
 		return false;
 	}
 	if(acc_head_id == "-1"){
-		alert("Account Head is invalid");
+		alert("Счет Глава является инвалид");
 		return false;
 	}
 	if(exp_name_id == "-1"){
-		alert("Expense Name is invalid");
+		alert("расходы имя является инвалид");
 		return false;
 	}
 	if(flagForUnitEnable == true){
@@ -716,17 +716,17 @@ function validateExpenseDetails(exp_date,exp_from_loc,exp_to_loc,exp_narration,e
 	}
 	if(perUnitDetailsJSON.expenseIsfromAndToReqd!='N'){
 		if(exp_from_loc == ""){
-			alert("From Location is invalid");
+			alert("Из Место нахождения является инвалид");
 			return false;
 		}
 		if(exp_to_loc == ""){
-			alert("To Location is invalid");
+			alert("к Место нахождения является инвалид");
 			return false;
 		}
 	}
 
 	if(exp_narration == ""){
-		alert("Narration is invalid");
+		alert("пересказ является инвалид");
 		return false;
 	}
 	
@@ -739,7 +739,7 @@ function validateExpenseDetails(exp_date,exp_from_loc,exp_to_loc,exp_narration,e
 			}
 			
 		}else{
-			alert("Unit is invalid");
+			alert("Ед. изм является инвалид");
 			return false;
 		}
 	}
@@ -752,12 +752,12 @@ function validateExpenseDetails(exp_date,exp_from_loc,exp_to_loc,exp_narration,e
 			}
 			
 		}else{
-			alert("Amount is invalid");
+			alert("Количество является инвалид");
 			return false;
 		}
 	
 	if(currency_id == "-1"){
-		alert("Currency Name is invalid");
+		alert("Название валюты является инвалид");
 		return false;
 	}
 	
@@ -955,14 +955,14 @@ function saveTravelRequestAjax(jsonToSaveTR){
 						j('#mainContainer').load(pageRef);
 						appPageHistory.push(pageRef);
 				  }else{
-					 successMessage = "Error: Oops something is wrong, Please Contact System Administer";
+					 successMessage = "ошибка: ой что нибудь является неправильно, пожалуйста контакт система администрировать";
 					  j('#loading_Cat').hide();
 					  j('#mainContainer').load(pageRef);
 					   appPageHistory.push(pageRef);
 				  }
 				},
 			  error:function(data) {
-				successMessage = "Error: Oops something is wrong, Please Contact System Administer";
+				successMessage = "ошибка: ой что нибудь является неправильно, пожалуйста контакт система администрировать";
 					  j('#loading_Cat').hide();
 					  j('#mainContainer').load(pageRef);
 					  appPageHistory.push(pageRef);
@@ -1110,54 +1110,54 @@ function setBooleanValueHotelRoundTextField(){
 }
 function validatetravelDetails(travel_purpose_id,account_head_id,from_id,to_id,travel_mode_id,travel_category_id,tvl_mode_rnd_id,tvl_category_rnd_id,tvl_date,travel_title){
 	if(travel_title==""){
-		alert("Travel Title is required");
+		alert("Путешествия Название требуется");
 		return false;
 	}
 	if(travel_purpose_id == "-1"){
-		alert("Purpose Of Travel is invalid");
+		alert("Цель поездки является инвалид");
 		return false;
 	}
 	if(account_head_id == "-1"){
-		alert("Account Head is invalid");
+		alert("Руководитель учетной записи является инвалид");
 		return false;
 	}
 	if(from_id == "-1"){
-		alert("From Location is invalid");
+		alert("От Откуда является инвалид");
 		return false;
 	}
 	if(to_id == "-1"){
-		alert("To Location is invalid");
+		alert("Для Местонахождение является инвалид");
 		return false;
 	}
 	var listItineraryTab = document.getElementById('myTab');
 			if(hasClass(listItineraryTab.children[0],"active")){
 				if(travel_mode_id == "-1"){
-					alert("Mode is invalid");
+					alert("Режим является инвалид");
 					return false;
 				}
 				if(travel_category_id == "-1"){
-					alert("Category is invalid");
+					alert("категория является инвалид");
 					return false;
 				}
 				if(document.getElementById('selectDate_One').value == "Select Date"){
-					alert("Travel Date is invalid");
+					alert("Дата поездки является инвалид");
 					return false;
 				}
 			}else{
 				if(tvl_mode_rnd_id == "-1"){
-					alert("Mode is invalid");
+					alert("Режим является инвалид");
 					return false;
 				}
 				if(tvl_category_rnd_id == "-1"){
-					alert("Category is invalid");
+					alert("категория является инвалид");
 					return false;
 				}
 				if(document.getElementById('selectDate_Three').value == "Select Date"){
-					alert("Travel Date is invalid");
+					alert("Дата поездки является инвалид");
 					return false;
 				}
 				if(document.getElementById('selectDate_Two').value == "Select Date"){
-					alert("Travel Date is invalid");
+					alert("Дата поездки является инвалид");
 					return false;
 				}
 		} 	
@@ -1335,7 +1335,7 @@ function setPerUnitDetails(transaction, results){
 				}
 		}else{
 
-			alert("Please Synch your expense Names to claim expense.");
+			alert("Пожалуйста Синхронизируйте ваш счет имен требовать расходов.");
 		}
  	
  	}
@@ -1359,7 +1359,7 @@ function setPerUnitDetails(transaction, results){
 				}
 		}else{
 
-			alert("Please synch your expense names to settle your travel request.");
+			alert("Пожалуйста, синхронизировать ваши имена расходов урегулировать ваш запрос путешествия.");
 		}
  	
  	}
@@ -1458,14 +1458,14 @@ function validateNumericField(obj){
 function setDelayMessage(returnJsonData,jsonToBeSend,busExpDetailsArr){
 		var pageRef=defaultPagePath+'success.html';
 		if(returnJsonData.DelayStatus=='Y'){
-			exceptionMessage = "This voucher has exceeded Time Limit.";
+			exceptionMessage = "Этот ваучер превысил Лимит времени.";
 			
 		      j('#displayError').children('span').text(exceptionMessage);
 		      j('#displayError').hide().fadeIn('slow').delay(2000).fadeOut('slow');
 		    
 		}else{
 
-			if(confirm("This voucher has exceeded Time Limit. Do you want to proceed?")==false){
+			if(confirm("Этот ваучер превысил лимит времени. Вы хотите продолжить?")==false){
 						return false;
 					}
 			 jsonToBeSend["DelayAllowCheck"]=true;
@@ -1475,7 +1475,7 @@ function setDelayMessage(returnJsonData,jsonToBeSend,busExpDetailsArr){
 
 function setTREntitlementExceedMessage(returnJsonData,jsonToBeSend){
 		var pageRef=defaultPagePath+'success.html';
-		var msg=returnJsonData.Message+".\nThis voucher has exceeded Entitlements. Do you want to proceed?";
+		var msg=returnJsonData.Message+".\nЭтот ваучер превысил Entitlements. Вы хотите продолжить?";
 	navigator.notification.confirm(msg,
 		function(buttonIndex){
             onConfirm(buttonIndex, msg,jsonToBeSend);
@@ -1533,33 +1533,33 @@ function createTravelExpenseNameDropDown(jsonExpenseNameArr){
 function validateTSDetails(exp_date,exp_narration,exp_unit,exp_amt,travelRequestId,exp_name_id,currency_id,travelMode_id,travelCategory_id,cityTown_id){
 	
 	if(travelRequestId == "-1"){
-		alert("Travel Request Number is invalid.");
+		alert("Путешествие Запрос является инвалид.");
 		return false;
 	}
 	if(exp_date == ""){
-		alert("Expense Date is invalid.");
+		alert("расходы Дата является инвалид.");
 		return false;
 	}
 	if(exp_name_id == "-1"){
-		alert("Expense Name is invalid.");
+		alert("расходы имя является инвалид.");
 		return false;
 	}
 	if(ismodeCategoryJSON.isModeCategory=="Y"){
 		if(travelMode_id == "-1"){
-			alert("Mode is invalid.");
+			alert("Режим является инвалид.");
 			return false;
 		}
 		if(travelCategory_id == "-1"){
-			alert("Category is invalid.");
+			alert("категория является инвалид.");
 			return false;
 		}
 	}
 	if(cityTown_id == "-1"){
-		alert("City town details is invalid.");
+		alert("детали Город город является инвалид.");
 		return false;
 	}
 	if(exp_narration == ""){
-		alert("Narration is invalid.");
+		alert("пересказ является инвалид.");
 		return false;
 	}
 	if(exp_unit != ""){
@@ -1573,7 +1573,7 @@ function validateTSDetails(exp_date,exp_narration,exp_unit,exp_amt,travelRequest
 				return false;
 			}
 		}else{
-			alert("Unit is invalid.");
+			alert("Ед. изм является инвалид.");
 			return false;
 		}
 	if(exp_amt != ""){
@@ -1587,11 +1587,11 @@ function validateTSDetails(exp_date,exp_narration,exp_unit,exp_amt,travelRequest
 				return false;
 			}
 		}else{
-			alert("Amount is invalid.");
+			alert("Количество является инвалид.");
 			return false;
 		}
 	if(currency_id == "-1"){
-		alert("Currency Name is invalid.");
+		alert("Название валюты является инвалид.");
 		return false;
 	}
 	return true;
@@ -1636,7 +1636,7 @@ function oprationOnExpenseClaim(){
 														  
 						  });
 					  }else{
-						 alert("Tap and select Expenses to send for Approval with server.");
+						 alert("Нажмите и выберите расходы, чтобы отправить на утверждение с сервером.");
 					  }
 			});
         }else{  
@@ -1681,7 +1681,7 @@ function oprationOnExpenseClaim(){
 							  var currentAccountHeadID=j(this).find('td.accHeadId').text();
 
 							  if(validateAccountHead(accountHeadIdToBeSent,currentAccountHeadID)==false){
-								  exceptionMessage="Selected expenses should be mapped under Single Expense Type/Account Head."
+								  exceptionMessage="Отдельные расходы должны быть отображены под единым Expense днищем / счета."
 									  j('#displayError').children('span').text(exceptionMessage);
 								  j('#displayError').hide().fadeIn('slow').delay(3000).fadeOut('slow');
 								  requestRunning = false;
@@ -1731,7 +1731,7 @@ function oprationOnExpenseClaim(){
 						  	 sendForApprovalBusinessDetails(jsonExpenseDetailsArr,busExpDetailsArr,accountHeadIdToBeSent);
 						  }
 					  }else{
-						 alert("Tap and select Expenses to send for Approval with server.");
+						 alert("Нажмите и выберите расходы, чтобы отправить на утверждение с сервером.");
 					  }
 			});
         }
@@ -1756,7 +1756,7 @@ function oprationOnExpenseClaim(){
 					  }
 					  j('#mainContainer').load(pageRef);
 				  }else{
-					  alert("Tap and select Expenses to delete.");
+					  alert("Нажмите и выберите Расходы удалить.");
 				  }
 			});
 		
@@ -1808,7 +1808,7 @@ function oprationOnExpenseClaim(){
 						  saveBusinessExpDetails(jsonExpenseDetailsArr,busExpDetailsArr);
 					  }
 				  }else{
-					 alert("Tap and select Expenses to synch with server.");
+					 alert("Нажмите и выберите Расходы на синхронизацию с сервером.");
 				  }
 			});
 	
@@ -1865,7 +1865,7 @@ function oprationONTravelSettlementExp(){
 				  }
 			}else{
 				requestRunning = false;
-				 alert("Tap and select Expenses to synch with server.");
+				 alert("Нажмите и выберите Расходы на синхронизацию с сервером.");
 			}
 			});
 			
@@ -1887,7 +1887,7 @@ function oprationONTravelSettlementExp(){
 					  j('#mainContainer').load(pageRef);
 					  j('#mainHeader').load(headerBackBtn);	
 				  }else{
-					 alert("Tap and select Expenses to delete.");
+					 alert("Нажмите и выберите Расходы удалить.");
 				  }	
 			});
 	}
@@ -2004,13 +2004,13 @@ function resetImageData(){
 								walletID = jsonWalletIDArr[i];
 								deleteSelectedWallets(walletID);
 							 }
-							document.getElementById("wallet_msg").innerHTML = "Selected File synch successfully.";
+							document.getElementById("wallet_msg").innerHTML = "Выбранный синхронизации файлов успешно.";
 							j('#mainHeader').load(headerBackBtn);
 							j("#walletSource td.selected").hide();
 							j('#wallet_msg').hide().fadeIn('slow').delay(3000).fadeOut('slow');  
 							j('#loading_Cat').hide();
 						}else if(data.SyncStatus=="Error"){
-							document.getElementById("wallet_msg").innerHTML = "Error: Oops something is wrong, Please Contact System Administer";
+							document.getElementById("wallet_msg").innerHTML = "ошибка: ой что нибудь является неправильно, пожалуйста контакт система администрировать";
 							j('#mainHeader').load(headerBackBtn);
 						 	j('#wallet_msg').hide().fadeIn('slow').delay(3000).fadeOut('slow');
 							j('#loading_Cat').hide();
@@ -2056,7 +2056,7 @@ function oprationOnWallet(){
 						  saveWalletDetails(jsonWalletArr,jsonWalletIDArr);
 						}
 					}else{
-					   alert("Tap and select My Receipts Wallet to synch with server.");
+					   alert("Нажмите и выберите Мои расписок Кошелек для синхронизации с сервером.");
 					  }
 					});
 			}		
@@ -2457,7 +2457,7 @@ function saveEmployeeAdvanceAjax(jsonToSaveEA){
 					 	j('#mainContainer').load(pageRef);
 					 }else{
 						 j('#loading_Cat').hide();
-						successMessage = "Oops!! Something went wrong. Please contact system administrator.";
+						successMessage = "Oops!! Something went wrong. пожалуйста контакт система администрировать.";
 						j('#mainHeader').load(headerBackBtn);
 					 	j('#mainContainer').load(pageRef);
 					 }
@@ -2465,7 +2465,7 @@ function saveEmployeeAdvanceAjax(jsonToSaveEA){
 				  error:function(data) {
 					j('#loading_Cat').hide();
 					requestRunning = false;
-					alert("Error: Oops something is wrong, Please Contact System Administer");
+					alert("Ошибка: К сожалению, что-то неправильно, то пожалуйста свяжитесь с системой Администрирование");
 				  }
 	});
 }
@@ -2473,19 +2473,19 @@ function saveEmployeeAdvanceAjax(jsonToSaveEA){
 function validateEmpAdvanceDetails(empAdvDate,empAdvTitle,empAdvjustification,empAdvAmount,empAdvType_id,empAdvType_Name,empAccHead_id,empAccHead_Name){
     
 	if(empAdvDate==""){
-		alert("Advance Date is required");
+		alert("Предварительная дата требуется");
 		return false;
 	}
 	if(empAdvTitle == ""){
-		alert("Advance Title is required");
+		alert("Advance Название требуется");
 		return false;
 	}
     if(empAdvjustification == ""){
-		alert("justification is required");
+		alert("обоснование необходимости");
 		return false;
 	}
      if(empAdvAmount == ""){
-		alert("Amount is required");
+		alert("Сумма требуется");
 		return false;
 	}
     
@@ -2497,7 +2497,7 @@ function validateEmpAdvanceDetails(empAdvDate,empAdvTitle,empAdvjustification,em
         }
 			
 		}else{
-			alert("Amount is invalid");
+			alert("Сумма является инвалид");
 			return false;
 		}
     
@@ -2507,11 +2507,11 @@ function validateEmpAdvanceDetails(empAdvDate,empAdvTitle,empAdvjustification,em
 	}
     
 	if(empAdvType_id == "-1" || empAdvType_id == ""){
-		alert("Advance Type is invalid");
+		alert("авансировать Тип является инвалид");
 		return false;
 	}
 	if(empAccHead_id == "-1" || empAccHead_id == ""){
-		alert("Expense Type is invalid");
+		alert("расходы Тип является инвалид");
 		return false;
 	}
 	
@@ -2677,7 +2677,7 @@ function submitBEWithEA(){
 							  var currentAccountHeadID=j(this).find('td.accHeadId').text();
 
 							  if(validateAccountHead(accountHeadIdToBeSent,currentAccountHeadID)==false){
-								  exceptionMessage="Selected expenses should be mapped under Single Expense Type/Account Head."
+								  exceptionMessage="Отдельные расходы должны быть отображены под единым Expense днищем / счета."
 									  j('#displayError').children('span').text(exceptionMessage);
 								  j('#displayError').hide().fadeIn('slow').delay(3000).fadeOut('slow');
 								  requestRunning = false;
@@ -2739,7 +2739,7 @@ function submitBEWithEA(){
 						  	 sendForApprovalBusinessDetailsWithEa(jsonExpenseDetailsArr,jsonEmplAdvanceArr,busExpDetailsArr,emplAdvanceDetailsArr,accountHeadIdToBeSent);
 						  }
 					  }else{
-						 alert("Tap and select Expenses to send for Approval with server.");
+						 alert("Нажмите и выберите расходы, чтобы отправить на утверждение с сервером.");
                       }
     
 }
@@ -2815,7 +2815,7 @@ j.ajax({
 					 	j('#mainContainer').load(pageRef);
 					 }else{
 						 j('#loading_Cat').hide();
-						successMessage = "Oops!! Something went wrong. Please contact system administrator.";
+						successMessage = "ой!! что нибудь является неправильно. пожалуйста контакт система администрировать.";
 						j('#mainHeader').load(headerBackBtn);
 					 	j('#mainContainer').load(pageRef);
 					 }
@@ -2823,7 +2823,7 @@ j.ajax({
 				  error:function(data) {
 					j('#loading_Cat').hide();
 					requestRunning = false;
-					alert("Error: Oops something is wrong, Please Contact System Administer");
+					alert("ошибка: ой что нибудь является неправильно, пожалуйста контакт система администрировать");
 				  }
 			});
 }

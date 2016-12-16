@@ -9,8 +9,8 @@ var empFirstName;
 var successSyncStatusBE =false;
 var successSyncStatusTR =false;
 
-var successMsgForCurrency = "Currency synchronized successfully.";
-var errorMsgForCurrency = "Currency not synchronized successfully.";
+var successMsgForCurrency = "валюта синхронизированный успешно.";
+var errorMsgForCurrency = "валюта не синхронизированный успешно.";
 
 var app = {
     // Application Constructor
@@ -240,7 +240,7 @@ function saveBusinessDetails(status){
 					j('#expenseName').select2('data', '');
 					//j('#currency').select2('data', '');
 					j('#loading_Cat').hide();
-					document.getElementById("syncSuccessMsg").innerHTML = "Expenses added successfully.";
+					document.getElementById("syncSuccessMsg").innerHTML = "Затраты добавленный успешно.";
 					j('#syncSuccessMsg').hide().fadeIn('slow').delay(300).fadeOut('slow') ;
 					resetImageData();
 					//createBusinessExp();
@@ -253,7 +253,7 @@ function saveBusinessDetails(status){
 			return false;
 		}
     } else {
-        alert("db not found, your browser does not support web sql!");
+        alert("db не найденный, ваш браузер делает не поддержка web sql!");
     }
 }
 
@@ -367,7 +367,7 @@ function saveTravelSettleDetails(status){
 			return false;
 		}
     } else {
-        alert("db not found, your browser does not support web sql!");
+        alert("db не найденный, ваш браузер делает не поддержка web sql!");
     }
 }
 
@@ -391,10 +391,10 @@ function fetchExpenseClaim() {
 	var rowThead = j("<thead></thead>").appendTo(mytable);
 	var rowTh = j('<tr></tr>').attr({ class: ["test"].join(' ') }).appendTo(rowThead);
 	
-	j('<th></th>').text("Date").appendTo(rowTh);
-	j('<th></th>').text("Expense Name").appendTo(rowTh);
-	j('<th></th>').text("Narration From/To Loc").appendTo(rowTh); 	
-	j('<th></th>').text("Amt").appendTo(rowTh);
+	j('<th></th>').text("Дата").appendTo(rowTh);
+	j('<th></th>').text("расходы имя").appendTo(rowTh);
+	j('<th></th>').text("пересказ Из/к место").appendTo(rowTh); 	
+	j('<th></th>').text("Количество").appendTo(rowTh);
 	var cols = new Number(5);
 	 
 	mydb.transaction(function(t) {
@@ -505,11 +505,11 @@ function fetchExpenseClaim() {
 	var rowThead = j("<thead></thead>").appendTo(mytable);
 	var rowTh = j('<tr></tr>').attr({ class: ["test"].join(' ') }).appendTo(rowThead);
 	
-	j('<th></th>').text("Date").appendTo(rowTh);
-	j('<th></th>').text("Expense Name").appendTo(rowTh);
-	j('<th></th>').text("Amt").appendTo(rowTh);
-	j('<th></th>').text("cityTown").appendTo(rowTh);
-	j('<th></th>').text("Narration").appendTo(rowTh);
+	j('<th></th>').text("Дата").appendTo(rowTh);
+	j('<th></th>').text("расходы имя").appendTo(rowTh);
+	j('<th></th>').text("Количество").appendTo(rowTh);
+	j('<th></th>').text("город город").appendTo(rowTh);
+	j('<th></th>').text("пересказ").appendTo(rowTh);
 	
 	
 	var cols = new Number(4);
@@ -696,20 +696,20 @@ function synchronizeBEMasterData() {
 
                       
 					j('#loading_Cat').hide(); 
-            document.getElementById("syncSuccessMsg").innerHTML = "Business Expenses synchronized successfully.";
+            document.getElementById("syncSuccessMsg").innerHTML = "Бизнес Затраты синхронизированный успешно.";
               j('#syncSuccessMsg').hide().fadeIn('slow').delay(500).fadeOut('slow');
 		 			
 				}
 				else{
 					j('#loading_Cat').hide();
-					document.getElementById("syncFailureMsg").innerHTML = "Business Expenses not synchronized successfully.";
+					document.getElementById("syncFailureMsg").innerHTML = "Бизнес Затраты не синхронизированный успешно.";
 					j('#syncFailureMsg').hide().fadeIn('slow').delay(300).fadeOut('slow');
 					
 				}
 					
 			  },
 			  error:function(data) {
-				 alert("Error: Oops something is wrong, Please Contact System Administer");
+				 alert("ошибка: ой что нибудь является неправильно, пожалуйста контакт система администрировать");
 			  }
 			});
 			
@@ -749,12 +749,12 @@ function synchronizeBEMasterData() {
 				
 			},
 			  error:function(data) {
-				alert("Error: Oops something is wrong, Please Contact System Administer");
+				alert("ошибка: ой что нибудь является неправильно, пожалуйста контакт система администрировать");
 			  }
 				});	
 			
 	} else {
-        alert("db not found, your browser does not support web sql!");
+        alert("db не найденный, ваш браузер делает не поддержка web sql!");
     }
 	
 }
@@ -812,12 +812,12 @@ function synchronizeBEMasterData() {
 
 				}else{
 
-					document.getElementById("syncFailureMsg").innerHTML = "Account Head Not synchronized Successfully.";
+					document.getElementById("syncFailureMsg").innerHTML = "Счет Глава Не синхронизированный успешно.";
 					j('#syncFailureMsg').hide().fadeIn('slow').delay(300).fadeOut('slow');
 				}
 			},		
 			error:function(data) {
-				alert("Error: Oops something is wrong, Please Contact System Administer");
+				alert("ошибка: ой что нибудь является неправильно, пожалуйста контакт система администрировать");
 			}	
 				
 		});
@@ -857,7 +857,7 @@ function synchronizeBEMasterData() {
 					
 				},
 				  error:function(data) {
-					alert("Error: Oops something is wrong, Please Contact System Administer");
+					alert("ошибка: ой что нибудь является неправильно, пожалуйста контакт система администрировать");
 				  }
 					});	
 		
@@ -936,18 +936,18 @@ function synchronizeBEMasterData() {
 					
 				}else{
 					j('#loading_Cat').hide();
-					document.getElementById("syncFailureMsg").innerHTML = "Travel Required master Expenses not synchronized successfully.";
+					document.getElementById("syncFailureMsg").innerHTML = "Путешествовать необходимые мастер Затраты не синхронизированный успешно.";
 					j('#syncFailureMsg').hide().fadeIn('slow').delay(300).fadeOut('slow');
 				}
 			},
 			error:function(data) {
-				alert("Error: Oops something is wrong, Please Contact System Administer");
+				alert("ошибка: ой что нибудь является неправильно, пожалуйста контакт система администрировать");
 			}
 		});
 		
 				 
 	} else {
-        alert("db not found, your browser does not support web sql!");
+        alert("db не найденный, ваш браузер делает не поддержка web sql!");
     }
  }
  
@@ -959,7 +959,7 @@ function synchronizeBEMasterData() {
 				t.executeSql("SELECT * FROM expNameMst", [], getExpNameList);
 			});
 	} else {
-		alert("db not found, your browser does not support web sql!");
+		alert("db не найденный, ваш браузер делает не поддержка web sql!");
 	}
  }
  
@@ -1028,7 +1028,7 @@ function getCurrencyList(transaction, results) {
 				t.executeSql("SELECT * FROM travelAccountHeadMst where processId=3", [], getTrAccHeadList);
 			});
 	} else {
-		alert("db not found, your browser does not support web sql!");
+		alert("db не найденный, ваш браузер делает не поддержка web sql!");
 	}
  }
 
@@ -1246,7 +1246,7 @@ function saveWalletAttachment(status){
             alert("You must enter inputs!");
         }
 	} else {
-        alert("db not found, your browser does not support web sql!");
+        alert("db не найденный, ваш браузер делает не поддержка web sql!");
     }
 }
 
@@ -1260,7 +1260,7 @@ function getExpenseNamesfromDB(accountHeadId){
 			t.executeSql("SELECT * FROM expNameMst where accHeadId="+accountHeadId, [], getExpNameList);
 		});
     } else {
-        alert("db not found, your browser does not support web sql!");
+        alert("db не найденный, ваш браузер делает не поддержка web sql!");
     }	
 }
 
@@ -1272,7 +1272,7 @@ function getExpenseNamesfromDBTravel(travelRequestId){
         	//t.executeSql("SELECT * FROM travelExpenseNameMst where travelAccountHeadId="+accountHeadId, [],fetchTravelExpeseName);
 			});
     } else {
-        alert("db not found, your browser does not support web sql!");
+        alert("db не найденный, ваш браузер делает не поддержка web sql!");
     }	
 }
 
@@ -1283,7 +1283,7 @@ function getStartEndDatefromDBTravel(travelRequestId){
         var result	= t.executeSql("select travelStartDate,travelEndDate from travelRequestDetails where travelRequestId="+travelRequestId, [],fetchTravelStartEndDate);
         	});
     } else {
-        alert("db not found, your browser does not support web sql!");
+        alert("db не найденный, ваш браузер делает не поддержка web sql!");
     }	
 }
 
@@ -1295,7 +1295,7 @@ function getCurrencyDBTravel(travelRequestId){
         	
 			});
     } else {
-        alert("db not found, your browser does not support web sql!");
+        alert("db не найденный, ваш браузер делает не поддержка web sql!");
     }	
 }
 
@@ -1310,7 +1310,7 @@ function onloadTravelSettleData() {
 				t.executeSql("SELECT * FROM currencyMst", [], getCurrencyList);
 			});
 	} else {
-		alert("db not found, your browser does not support web sql!");
+		alert("db не найденный, ваш браузер делает не поддержка web sql!");
 	}
  }
  
@@ -1374,7 +1374,7 @@ function fetchTravelDomOrInterDate(transaction, results) {
 		t.executeSql("SELECT * FROM currencyMst", [], getCurrencyList);
 		});
 		} else {
-		alert("db not found, your browser does not support web sql!");
+		alert("db не найденный, ваш браузер делает не поддержка web sql!");
 	}
 		}
 	}
@@ -1391,7 +1391,7 @@ function getPerUnitFromDB(expenseNameID){
 			t.executeSql("SELECT * FROM expNameMst where id="+expenseNameID, [], setPerUnitDetails);
 		});
     } else {
-        alert("db not found, your browser does not support web sql!");
+        alert("db не найденный, ваш браузер делает не поддержка web sql!");
     }	
 }
 
@@ -1402,7 +1402,7 @@ function getModecategoryFromDB(expenseNameID){
 			t.executeSql("SELECT * FROM travelExpenseNameMst where id="+expenseNameID, [], setModeCategroyDetails);
 		});
     } else {
-        alert("db not found, your browser does not support web sql!");
+        alert("db не найденный, ваш браузер делает не поддержка web sql!");
     }	
 }
 
@@ -1413,7 +1413,7 @@ function getCategoryFromDB(modeID){
 			t.executeSql("SELECT * FROM travelCategoryMst where travelModeId="+modeID, [], fetchTrvlCategoryList);
 		});
     } else {
-        alert("db not found, your browser does not support web sql!");
+        alert("db не найденный, ваш браузер делает не поддержка web sql!");
     }	
 }
 
@@ -1452,22 +1452,22 @@ function synchronizeTRForTS() {
 					onloadTravelSettleData();
 					j('#loading_Cat').hide();
 
-				document.getElementById("syncSuccessMsg").innerHTML = "Travel Request Details synchronized successfully.";
+				document.getElementById("syncSuccessMsg").innerHTML = "Путешествовать Запрос Детали синхронизированный успешно.";
 				j('#syncSuccessMsg').hide().fadeIn('slow').delay(500).fadeOut('slow');
 				}else{
 					j('#loading_Cat').hide();
-					document.getElementById("syncFailureMsg").innerHTML = "Travel Required Expenses not synchronized successfully.";
+					document.getElementById("syncFailureMsg").innerHTML = "Путешествовать необходимые Затраты не синхронизированный успешно.";
 					j('#syncFailureMsg').hide().fadeIn('slow').delay(300).fadeOut('slow');
 				}
 					
 			},
 			error:function(data) {
-				alert("Error: Oops something is wrong, Please Contact System Administer");
+				alert("ошибка: ой что нибудь является неправильно, пожалуйста контакт система администрировать");
 			}
 		});
 
 	} else {
-        alert("db not found, your browser does not support web sql!");
+        alert("db не найденный, ваш браузер делает не поддержка web sql!");
     }
  }
  
@@ -1610,20 +1610,20 @@ function synchronizeEAMasterData() {
                       
 					j('#loading_Cat').hide();
                       
-					document.getElementById("syncSuccessMsg").innerHTML = "Employee Advance synchronized successfully.";
+					document.getElementById("syncSuccessMsg").innerHTML = "Наемный рабочий авансировать синхронизированный успешно.";
 					j('#syncSuccessMsg').hide().fadeIn('slow').delay(800).fadeOut('slow');
 					
 				}
 				else{
 					j('#loading_Cat').hide();
-					document.getElementById("syncFailureMsg").innerHTML = "Employee Advance not synchronized successfully.";
+					document.getElementById("syncFailureMsg").innerHTML = "Наемный рабочий авансировать не синхронизированный успешно.";
 					j('#syncFailureMsg').hide().fadeIn('slow').delay(300).fadeOut('slow');
 					
 				}
 					
 			  },
 			  error:function(data) {
-				 alert("Error: Oops something is wrong, Please Contact System Administer");
+				 alert("ошибка: ой что нибудь является неправильно, пожалуйста контакт система администрировать");
 			  }
 			});
   }
@@ -1645,7 +1645,7 @@ function onloadEAData() {
 				t.executeSql("SELECT * FROM accountHeadEAMst", [], fetchAccountHeadList);
 			});
 	} else {
-		alert("db not found, your browser does not support web sql!");
+		alert("db не найденный, ваш браузер делает не поддержка web sql!");
 	}
  }
 
@@ -1670,7 +1670,7 @@ function getAdvanceTypeFromDB(AdvancetypeID){
 			t.executeSql("SELECT * FROM advanceType where advancetypeID="+AdvancetypeID, [], fetchAdvanceTypeList);
 		});
     } else {
-        alert("db not found, your browser does not support web sql!");
+        alert("db не найденный, ваш браузер делает не поддержка web sql!");
     }	
 }
 
@@ -1694,7 +1694,7 @@ function getAccountHeadFromDB(AccountHeadID){
 			t.executeSql("SELECT * FROM accountHeadEAMst where accountHeadId="+AccountHeadID, [], fetchAccountHeadList);
 		});
     } else {
-        alert("db not found, your browser does not support web sql!");
+        alert("db не найденный, ваш браузер делает не поддержка web sql!");
     }	
 }
 
@@ -1713,10 +1713,10 @@ function fetchEmployeeAdvance() {
 	var rowThead = j("<thead></thead>").appendTo(mytable);
 	var rowTh = j('<tr></tr>').attr({ class: ["test"].join(' ') }).appendTo(rowThead);
 	
-	j('<th></th>').text("Date").appendTo(rowTh);
-	j('<th></th>').text("Expense Name").appendTo(rowTh);
-	j('<th></th>').text("Narration From/To Loc").appendTo(rowTh); 	
-	j('<th></th>').text("Amt").appendTo(rowTh);
+	j('<th></th>').text("Дата").appendTo(rowTh);
+	j('<th></th>').text("расходы имя").appendTo(rowTh);
+	j('<th></th>').text("пересказ Из/к место").appendTo(rowTh); 	
+	j('<th></th>').text("Количество").appendTo(rowTh);
 	var cols = new Number(5);
 	 
 	mydb.transaction(function(t) {
@@ -1813,9 +1813,9 @@ function fetchEmployeeAdvance() {
    var rowThead = j("<thead></thead>").appendTo(table1);
 	var rowTh = j('<tr></tr>').attr({ class: ["test"].join(' ') }).appendTo(rowThead);
 	
-	j('<th></th>').text("Voucher No.").appendTo(rowTh);
+	j('<th></th>').text("Ваучер Число.").appendTo(rowTh);
 	//j('<th></th>').text("Title").appendTo(rowTh);
-	j('<th></th>').text("Amount").appendTo(rowTh);
+	j('<th></th>').text("Количество").appendTo(rowTh);
 	 
     table2 = j('<table></table>').attr({ id: "source1",class:["table","table-striped","table-bordered"].join(' ') }).appendTo(mainTable);
     var rowThead1 = j("<thead></thead>").appendTo(table2);
